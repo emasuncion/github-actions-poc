@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
   pull-requests: write
 
 jobs:
@@ -25,15 +26,14 @@ jobs:
 
   approve:
     needs: stale
-    if: ${{ github.event.label.name == 'stale' }}
+    if: ${{ contains( github.event.pull_request.labels.*.name, 'stale') }}
     runs-on: ubuntu-latest
     steps:
       - name: 'Check number of approvers'
-        uses: sakhnovict/multi-approved-event-action@1.0.9
+        uses: taichi/approved-event-action@v1.2.1
         id: approved
         with:
-          approvalsCount: '1'
-          onlyEqual: 'true'
+          approvals: '1'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
