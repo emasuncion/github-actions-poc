@@ -24,14 +24,14 @@ jobs:
     needs: stale
     runs-on: ubuntu-latest
     steps:
-      - uses: taichi/approved-event-action@v1.2.1
+      - uses: sakhnovict/multi-approved-event-action@1.0.9
         id: approved
         env:
           GITHUB_TOKEN: ${{ secrets.ACTIONS_POC }}
 
   merge:
     needs: approve
-    if: ${{ needs.approve.outputs.approved == 'true' }}
+    if: ${{ needs.approve.outputs.isApproved == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: 'Merge approved PR'
