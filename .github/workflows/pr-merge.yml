@@ -26,7 +26,8 @@ jobs:
 
   approve:
     needs: stale
-    if: ${{ contains( github.event.pull_request.labels.*.name, 'stale') }}
+    if: |
+      contains( github.event.issue.labels.*.name, 'stale')
     runs-on: ubuntu-latest
     steps:
       - name: 'Check number of approvers'
