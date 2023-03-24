@@ -24,8 +24,8 @@ jobs:
           stale-pr-label: stale
 
   approve:
-    if: ${{ github.event.label.name == 'stale' }}
     needs: stale
+    if: ${{ github.event.label.name == 'stale' }}
     runs-on: ubuntu-latest
     steps:
       - name: 'Check number of approvers'
