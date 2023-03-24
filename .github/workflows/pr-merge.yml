@@ -26,6 +26,8 @@ jobs:
     steps:
       - uses: taichi/approved-event-action@v1.2.1
         id: approved
+        env:
+            GITHUB_TOKEN: ${{ secrets.ACTIONS_POC }}
 
   merge:
     needs: approve
