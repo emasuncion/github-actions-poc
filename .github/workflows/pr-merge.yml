@@ -28,6 +28,7 @@ jobs:
         id: approved
 
   merge:
+    needs: approve
     if: ${{ steps.approve.outputs.approved == 'true' }}
     runs-on: ubuntu-latest
     steps:
