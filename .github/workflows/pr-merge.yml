@@ -27,7 +27,7 @@ jobs:
       - uses: sakhnovict/multi-approved-event-action@1.0.9
         id: approved
         env:
-          ACTIONS_POC: ${{ secrets.ACTIONS_POC }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_POC }}
 
   merge:
     needs: approve
@@ -39,4 +39,4 @@ jobs:
         with:
           merge_method: rebase
         env:
-          ACTIONS_POC: ${{ secrets.ACTIONS_POC }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_POC }}
