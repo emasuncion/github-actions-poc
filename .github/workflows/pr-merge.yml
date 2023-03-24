@@ -24,9 +24,8 @@ jobs:
           stale-pr-label: stale
 
   approve:
-    needs: stale
     if: |
-      needs.stale.status == 'success' &&
+      needs.stale.status == 'success' ||
       contains( github.event.issue.labels.*.name, 'stale')
     runs-on: ubuntu-latest
     steps:
