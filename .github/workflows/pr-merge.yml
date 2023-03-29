@@ -3,8 +3,8 @@ name: Automatically merge approved Pull Requests
 on:
   pull_request:
     types: ['labeled']
-  schedule:
-    - cron: '*/5 * * * 1-5' # Will run every 5 minutes, Monday to Friday
+#  schedule:
+#    - cron: '*/5 * * * 1-5' # Will run every 5 minutes, Monday to Friday
 
 jobs:
   stale:
