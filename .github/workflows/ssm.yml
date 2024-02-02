@@ -8,24 +8,24 @@ permission:
   contents: read
 
 jobs:
-  build:
-  environment: development
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+  deployment:
+    environment: development
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        role-to-assume: arn:aws:iam::562131571227:user/cec-assumeadmin
-        aws-region: ap-southeast-1
-        role-session-name: GHA-OIDC-CDK
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::562131571227:user/cec-assumeadmin
+          aws-region: ap-southeast-1
+          role-session-name: GHA-OIDC-CDK
 
-    - name: Add hello SecureString to SSM
-      uses: dwardu89/aws-ssm-parameter-store@latest
-      with:
-        ssm-path: "/cec-task"
-        ssm-value: ${{ secrets.TEST_SECRET }}
-        aws-region: ap-southeast-1
-        ssm-value-type: "StringList"
+      - name: Add hello SecureString to SSM
+        uses: dwardu89/aws-ssm-parameter-store@latest
+        with:
+          ssm-path: "/cec-task"
+          ssm-value: ${{ secrets.TEST_SECRET }}
+          aws-region: ap-southeast-1
+          ssm-value-type: "StringList"
