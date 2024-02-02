@@ -23,7 +23,7 @@ jobs:
           role-session-name: GHA-OIDC-CDK
 
       - name: Add hello SecureString to SSM
-        uses: dwardu89/aws-ssm-parameter-store@2.0.2
+        uses: dwardu89/aws-ssm-parameter-store@v2.0.2
         with:
           ssm-path: "/cec-task"
           ssm-value: ${{ secrets.TEST_SECRET }}
