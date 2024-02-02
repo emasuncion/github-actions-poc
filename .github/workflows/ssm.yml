@@ -3,7 +3,7 @@ name: 'Test SSM Github TF'
 on:
   workflow_dispatch:
 
-permission:
+permissions:
   id-token: write
   contents: read
 
